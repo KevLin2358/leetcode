@@ -20,3 +20,8 @@ const anagrams = (s1, s2) => {
   
   return true;
 };
+
+// n = length of string 1
+// m = length of string 2
+// Time: O(n + m)
+// Space: O(n)
