@@ -17,3 +17,24 @@ const linkedListFindIt = (head, target) => {
   }
   return false;
 };
+
+// const linkedListFind = (head, target) => {
+//   // todo
+//   if(!head) return false;
+  
+//   let current = head;
+//   while(current){
+//     if(current.val === target) return true;
+//     current = current.next;
+//   }
+//   return false;
+// };
+
+
+// const linkedListFind = (head, target) => {
+//   // todo
+//   if(head === null) return false;
+//   if(head.val === target)return true;
+  
+//   return linkedListFind(head.next, target)
+// };
