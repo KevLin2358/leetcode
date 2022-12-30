@@ -1,3 +1,7 @@
+// time complexity: O(n) 
+// space complexity: O(n)
+// where n is the number of nodes in the binary tree
+
 //iteratively
 const depthFirstValues = (root) => {
   // todo
