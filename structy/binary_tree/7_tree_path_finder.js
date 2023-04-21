@@ -1,52 +1,51 @@
-// time complexity: O(n)
-// space complexity: O(n)
-// where n is the number of nodes
-
-
+// depth first
+// time conplexity : O(n^2)
+// space complexity : O(n)
 const pathFinder = (root, target) => {
-  // todo
-  const result = pathFinderHelper(root, target);
-  if(!result) return null;
-  else return result.reverse()
+  // base case
+  if (!root) return null
+  if (root.val === target) return [root.val]
+  
+  // two paths
+  const leftPath = pathFinder(root.left, target)
+  const rightPath = pathFinder(root.right, target)
+  
+  // either left, right or not found
+  if(leftPath) return [root.val, ...leftPath]
+  if(rightPath) return [root.val, ...rightPath]
+  return null
+};
+
+
+// depth first w/ push
+// time conplexity : O(n)
+// space complexity : O(n)
+const pathFinderPush = (root, target) => {
+  const res = pathFinderHelper(root, target)
+  if (!res) return null
+  return res.reverse()
 }
 
-const pathFinderHelper = (root, target) =>{
-  if(!root) return null;
-  if(root.val === target) return [ root.val ];
-  
-  let leftside = pathFinderHelper(root.left, target);
-  if(leftside){
-    leftside.push(root.val);
-    return leftside;
+const pathFinderHelper = (root, target) => {
+  // base case
+  if (root === null) return null
+  if (root.val === target) return [ root.val ]
+
+  // two paths
+  const leftPath = pathFinderHelper(root.left, target)
+  const rightPath = pathFinderHelper(root.right, target)
+
+  // left, right will use push
+  if (leftPath) {
+    leftPath.push(root.val)
+    return leftPath
+  }
+
+  if (rightPath) {
+    rightPath.push(root.val)
+    return rightPath
   }
   
-  let rightside = pathFinderHelper(root.right, target);
-  if(rightside){
-    rightside.push(root.val);
-    return rightside;
-  }
-  
-  return null;
+  // nothing return null
+  return null
 }
-
-// time complexity: O(n^2) because of lines 39 & 45 
-// space complexity: O(n) 
-// where n is the number of nodes
-// const pathFinder = (root, target) => {
-//     if(!root) return null;
-//     if(root.val === target) return [ root.val ];
-
-//     let leftside = pathFinder(root.left, target);
-//     if(leftside){
-//         leftside = [root.val, ...leftside];
-//         return leftside;
-//     }
-
-//     let rightside = pathFinder(root.right, target)
-//     if(rightside){
-//         rightside = [root.val, ...rightside];
-//         return rightside;
-//     }
-
-//     return null;
-// }
