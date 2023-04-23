@@ -5,17 +5,19 @@
 
 const treeValueCount = (root, target) => {
   // todo
-  if(!root) return 0;
-  
-  let stack = [ root ];
-  let count = 0;
-  
-  while(stack.length > 0){
-    const element = stack.pop();
-    if(element.val === target) count++;
-    if(element.right) stack.push(element.right);
-    if(element.left) stack.push(element.left);
+  if (!root) return 0
+
+  let count = 0
+  let stack = [ root ]
+
+  while (stack.length > 0) {
+    let current = stack.pop()
+
+    if (current.val === target) count++
+    
+    if (current.right) stack.push(current.right)
+    if (current.left) stack.push(current.left)
   }
-  
-  return count;
+
+  return count
 };
