@@ -12,10 +12,12 @@ const bottomRightValue = (root) => {
     let stack = [ [root] ]
     let flag = true
 
+    // time: O(h) where h is the height of the tree
     while (flag) {
         let curr = stack.pop()
         let arr = []
-
+        
+        // time: O(n) // number of nodes within a lvl
         for (let i = 0; i < curr.length; i++) {
             let currNode = curr[i]
 
@@ -23,6 +25,7 @@ const bottomRightValue = (root) => {
             if (currNode.right) arr.push(currNode.right)
         }
 
+        // time: O(n) // number of nodes within a lvl
         flag = arr.some((currNode) => {
             if (currNode.left || currNode.right) return true
             return false
@@ -30,7 +33,7 @@ const bottomRightValue = (root) => {
 
         stack.push(arr)
     }
-
+    
     let subArrLength = stack[0].length - 1
     return stack[0][subArrLength].val
 }
