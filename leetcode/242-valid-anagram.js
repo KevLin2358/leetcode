@@ -25,3 +25,31 @@ var isAnagram2 = function (s, t) {
   }
   return true;
 };
+
+
+var isAnagram3 = function(s, t) {
+    let objS = populateObj(s)
+    let objT = populateObj(t)
+
+    for (let char in objS) {
+        if(objS[char] !== objT[char]) return false
+    }
+
+    for (let char in objT) {
+        if(objS[char] !== objT[char]) return false
+    }
+
+    return true
+};
+
+function populateObj(word) {
+    let obj = {}
+
+    for (let i = 0; i < word.length; i++) {
+        let char = word[i]
+        if (obj[char]) obj[char] += 1
+        else obj[char] = 1
+    }
+
+    return obj
+}
