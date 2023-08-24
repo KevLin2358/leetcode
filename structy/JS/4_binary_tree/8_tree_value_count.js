@@ -2,6 +2,15 @@
 // space complexity: O(n)
 // where n is the number of nodes
 
+// recursion
+
+const treeValueCountRecursive = (root, target) => {
+  // todo
+  if (!root) return 0
+  let count = root.val === target ? 1 : 0
+  return count + treeValueCount(root.left, target) + treeValueCount(root.right, target)
+};
+
 // review
 const treeValueCount = (root, target) => {
   // todo
