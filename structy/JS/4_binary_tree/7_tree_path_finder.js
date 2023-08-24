@@ -11,11 +11,13 @@ const pathFinder = (root, target) => {
   let rightSide = pathFinder(root.right, target)
   
   if (leftSide) {
-    return [root.val, ...leftSide]
+    // return [root.val, ...leftSide] // way slower
+    return [root.val].concat(leftSide)
   }
   
   if (rightSide) {
-    return [root.val, ...rightSide]
+    // return [root.val, ...rightSide] // way slower
+    return [root.val].concat(rightSide)
   }
   
   return null
