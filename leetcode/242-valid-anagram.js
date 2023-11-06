@@ -1,3 +1,28 @@
+// revisited
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+
+    let pop1 = populate(s);
+    let pop2 = populate(t);
+
+    for (let key in pop1) {
+      if (pop2[key] !== pop1[key]) return false;
+    }
+
+    return true;
+};
+
+const populate = (string) => {
+    let obj = {};
+
+    for (let char of string) {
+        if (obj[char]) obj[char]++;
+        else obj[char] = 1;
+    }
+
+    return obj;
+}
+
 var isAnagram = function (s, t) {
   let word1 = s.split("").sort().join("");
   let word2 = t.split("").sort().join("");
